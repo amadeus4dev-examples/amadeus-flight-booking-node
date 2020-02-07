@@ -28,8 +28,8 @@ app.post('/citySearch', function(req, res) {
   var urlSend= "&keyword="+keyword
     
   try 
-{
-  token("qztkbf5XWjNSGkXRF9bfAwNg6bELWvVD","w9mJ7ZJzlEGNffut").then(function(tokenAuth){
+{//put your id and secret key into it
+  token("","").then(function(tokenAuth){
     // console.log(tokenAuth);
     var NaseUrl = "https://test.api.amadeus.com"
      try {
@@ -58,7 +58,7 @@ app.post('/date', function(req, res) {
 
 try 
 {
-  token("qztkbf5XWjNSGkXRF9bfAwNg6bELWvVD","w9mJ7ZJzlEGNffut").then(function(tokenAuth){
+  token("","").then(function(tokenAuth){
 
 
       try {
@@ -85,7 +85,7 @@ app.post('/flightprice', function(req, res) {
 
 try 
 {
-  token("qztkbf5XWjNSGkXRF9bfAwNg6bELWvVD","w9mJ7ZJzlEGNffut").then(function(tokenAuth){
+  token("","").then(function(tokenAuth){
 
     console.log(tokenAuth);
 
@@ -118,7 +118,7 @@ app.post('/flightCreateOrder', function(req, res) {
 var NaseUrl = "https://test.api.amadeus.com"
   try 
 {
-  token("qztkbf5XWjNSGkXRF9bfAwNg6bELWvVD","w9mJ7ZJzlEGNffut").then(function(tokenAuth){
+  token("","").then(function(tokenAuth){
 
       try {
       createOrder(NaseUrl,endpoints.createOrder,inputFlightCreateOrder, "a@gmail.com", tokenAuth.access_token).then(function(z) {
