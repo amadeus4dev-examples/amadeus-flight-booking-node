@@ -1,0 +1,106 @@
+<div id="app"><div class="page-container">
+    <md-app md-waterfall md-mode="overlap">
+      <md-app-toolbar class="md-primary md-large">
+        <div class="md-toolbar-row">
+          <md-button v-mojs="mojsOptions" class="md-icon-button" @click="menuVisible = !menuVisible">
+            <md-icon>menu</md-icon>
+          </md-button>
+
+          
+       <span class="md-title">Amadeus<md-tooltip md-direction="right">“{{token}}</md-tooltip></span>
+    
+
+          
+        </div>
+      </md-app-toolbar>
+
+      <md-app-drawer :md-active.sync="menuVisible">
+        <md-toolbar class="md-transparent" md-elevation="0">
+          Navigation
+        </md-toolbar>
+
+        <md-list>
+          <md-list-item v-mojs="mojsOptions">
+            <md-icon>move_to_inbox</md-icon>
+            <span class="md-list-item-text">Inbox</span>
+          </md-list-item>
+
+          <md-list-item v-mojs="mojsOptions">
+            <md-icon>send</md-icon>
+            <span class="md-list-item-text">Sent Mail</span>
+          </md-list-item>
+
+          <md-list-item v-mojs="mojsOptions">
+            <md-icon>delete</md-icon>
+            <span class="md-list-item-text">Trash</span>
+          </md-list-item>
+
+          <md-list-item v-mojs="mojsOptions">
+            <md-icon>error</md-icon>
+            <span class="md-list-item-text">Spam</span>
+          </md-list-item>
+        </md-list>
+      </md-app-drawer>
+
+      <md-app-content>
+
+      <!--     <a href="">
+      <div id="btn1" class="button">
+        <router-link to="/result"><h1>FLight search</h1></router-link>
+      </div>
+    </a> -->
+
+   <!--  <a href="">
+      <div id="btn2" class="button">
+        <router-link to="/bar"><h1>Flight price</h1></router-link>
+      </div>
+    </a>
+
+    <a href="">
+      <div id="btn3" class="button">
+        <router-link to="/let"><h1>Create orders</h1></router-link>
+      </div>
+    </a>
+
+ --> 
+<!--  <img id="loading" src="https://i7.pngguru.com/preview/503/7/754/flight-attendant-air-travel-airplane-aviation-avion.jpg"> -->
+
+<div id="loading" class="loading">
+  <div class="finger finger-1">
+    <div class="finger-item">
+      <span></span><i></i>
+    </div>
+  </div>
+        <div class="finger finger-2">
+    <div class="finger-item">
+      <span></span><i></i>
+    </div>
+  </div>
+        <div class="finger finger-3">
+    <div class="finger-item">
+      <span></span><i></i>
+    </div>
+  </div>
+        <div class="finger finger-4">
+    <div class="finger-item">
+      <span></span><i></i>
+    </div>
+  </div>
+        <div class="last-finger">
+    <div class="last-finger-item"><i></i></div>
+  </div>
+    </div>
+
+ <router-view></router-view>
+
+   <div v-if="isVisible" class="loader-overlay">
+        <div class="loader"></div>
+        <span class="text" v-html="text"></span>
+    </div>
+
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->	
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+</md-app-content>
+    </md-app>
+</div>
+</div>

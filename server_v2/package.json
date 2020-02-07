@@ -1,0 +1,34 @@
+{
+  "name": "nodeventas",
+  "version": "1.0.0",
+  "description": "parse folder of ventyas to generate jSon",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "theophile vast",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.4"
+  },
+  "dependencies": {
+    "@tvast/plume.js": "^1.0.35",
+    "amadeus": "^3.2.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dree": "^2.1.11",
+    "express": "^4.17.1",
+    "glob": "^7.1.4",
+    "json-stringify-safe": "^5.0.1",
+    "mongoose": "^5.8.7",
+    "node-fetch": "^2.6.0",
+    "node-static": "^0.7.11",
+    "nodemon": "^1.19.4",
+    "request": "^2.88.0",
+    "save": "^2.4.0",
+    "serve-index": "^1.9.1",
+    "socket.io": "^2.3.0"
+  }
+}

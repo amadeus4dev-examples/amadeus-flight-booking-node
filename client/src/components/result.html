@@ -1,0 +1,109 @@
+<div>
+	
+
+     
+        <!-- <p>The safely stored number: {{$store.getters.flavor}}</p> -->
+        
+<!--  <span v-for="bar in foo.segments">
+                {{bar.departure.iataCode}}--{{bar.arrival.iataCode}}
+              </span>
+            </span>
+          <p>Number of seat : {{item.numberOfBookableSeats}}-- Price :{{item.price.grandTotal}}</p>
+    </span> -->
+<div class="md-layout md-gutter">
+ 
+ <div class="md-layout-item"> </div>
+    <div class="md-layout-item">
+      </div>
+    <div class="md-layout-item"></div>
+  </div>
+     <main>
+      <header class="displayflex" v-for="(item,index) in $store.getters.flavor.data.flightOffers">
+        <h1>Boarding pass</h1>
+        <div>
+          <h5>Flight n°</h5>
+          <p> <span  v-for="(foo, index) in $store.getters.flavor.data.associatedRecords" :key="index" > 
+           <div >
+            {{foo.reference}}
+          </div>
+       </span></p>
+        </div>
+        <div>
+          <h5>Price</h5>
+          <p>{{item.price.grandTotal}}</p>
+        </div>
+        <div>
+          <h5>Duration</h5>
+          <p>
+            <!-- <span  v-for="(durationflight, index) in $store.getters.flavor.data.itineraries" :key="index" class="card-title">  -->
+
+              <span v-for="(duration, index) in $store.getters.flavor.data.itineraries"> <strong><span  v-for="(foo, index) in duration" :key="index" class="card-title ">{{foo.duration}}</span></strong></span>
+            </p>
+        </div>
+      </header>
+      <section v-for="(item,index) in $store.getters.flavor.data.flightOffers" class="flight--general">
+        <div><span  v-for="(foo, index) in item.itineraries" :key="index" class="card-title"> 
+
+              <span v-for="bar in foo.segments">
+          <!-- <h4>{{getTime(bar.departure.at)}}</h4> -->
+          <h2>{{bar.departure.iataCode}}</h2>
+        </span></span>
+        </div>
+        <div>
+          <h2>to</h2>
+        </div>
+        <div>
+          <span  v-for="(foo, index) in item.itineraries" :key="index" class="card-title"> 
+
+              <span v-for="bar in foo.segments">
+          <!-- <h4>{{getTime(bar.arrival.at)}}</h4> -->
+          <h2>{{bar.arrival.iataCode}}</h2>
+        </span></span>
+        </div>
+      </section>
+      <section v-for="(item,index) in $store.getters.flavor.data.flightOffers" class="flight--TimeInfo white displayFlex">
+     
+          <h5>Departure</h5>
+           <span  v-for="(foo, index) in item.itineraries" :key="index" > 
+
+              <span v-for="bar in foo.segments">
+          <h3>{{getTime(bar.departure.at)}}</h3>
+        </span></span>
+       
+      
+          <h5>Arrival</h5>
+           <span  v-for="(foo, index) in item.itineraries" :key="index" > 
+
+              <span v-for="bar in foo.segments">
+          <h3>{{getTime(bar.arrival.at)}}</h3>
+        </span></span>
+       
+        <div>
+          <!-- <h5>Duration</h5> -->
+          
+          <p>
+         <!--    <span  v-for="(foo, index) in item.itineraries" :key="index" > 
+
+              <span v-for="bar in foo.segments">{{bar}}</span></span> -->
+
+            </p>
+        </div>
+      
+      </section>
+      <section v-for="(item,index) in $store.getters.flavor.data.travelers"class="flight--PassInfo white">
+        <!-- {{item.name}} -->
+        <div>
+          <h5>Passenger</h5>
+          <p>{{item.name.firstName}}</p><p> {{item.name.lastName}}</p>
+        </div>
+        <div>
+          <h5>Seat</h5>
+          <p>23A</p>
+        </div>
+      </section>
+      <section class="flight--qrcode"><img src="http://cdnqrcgde.s3-eu-west-1.amazonaws.com/wp-content/uploads/2013/11/jpeg.jpg"></section>
+      
+      <section class="extra--image"><img src="https://images.unsplash.com/photo-1464790719320-516ecd75af6c?dpr=2&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=">          </section>
+</main>
+        
+</div>
