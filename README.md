@@ -1,4 +1,15 @@
 # Development and Testing
+## Set up Node server
+
+Go to the directory
+
+```sh
+cd server
+```
+Install depedencies
+```sh
+npm install
+```
 
 For authentication add your API Key/Secret to your `.bashrc` or `.zshrc` files or export then into your terminal before starting the Rails server
 
@@ -15,17 +26,7 @@ export AMADEUS_HOSTNAME="production" # Be default the environment is set to test
 
 > Each environment has different API keys. Do not forget to update them!
 
-## Set up Node server
 
-Go to the directory
-
-```sh
-cd server
-```
-Install depedencies
-```sh
-npm install
-```
 Launch the server
 ```sh
 npm start
