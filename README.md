@@ -7,7 +7,7 @@ cd server
 ```
 Install depedencies
 ```sh
-npm i\
+npm i
 ```
 Launch the server
 ```sh
