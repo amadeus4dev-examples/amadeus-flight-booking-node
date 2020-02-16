@@ -3,7 +3,7 @@
 Go to the directory
 
 ```sh
-cd Nodejs
+cd server
 ```
 Install depedencies
 ```sh
