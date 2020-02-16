@@ -14,7 +14,7 @@ Launch the server
 npm start
 ```
 
-## Set up Vue js 
+## Set up Vue js (client)
 
 You need to install vue js cli 
 
@@ -26,11 +26,11 @@ yarn global add @vue/cli
 ```
 
 ```sh
-cd VueJs
+cd client
 ```
 Install depedencies
 ```sh
-npm i
+npm install
 ```
 Serve the project
 
