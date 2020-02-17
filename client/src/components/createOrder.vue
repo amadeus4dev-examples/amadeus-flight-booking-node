@@ -14,7 +14,6 @@ import 'sweetalert2/src/sweetalert2.scss'
     maxLength
   } from 'vuelidate/lib/validators'
 import {BadgerAccordion, BadgerAccordionItem} from 'vue-badger-accordion'
-// import { store } from '../store.js';
 import router from '../router.js'
 export default {
   name: 'searchPrice',
@@ -92,7 +91,6 @@ computed: {
 
 watch:{
 			selectedTravel(){
-				// alert('checkbox changed');
 				return window.console.log(this.selectedTravel);},
       
 			},
@@ -133,13 +131,11 @@ methods: {
         })
       },searchCity() {
           this.showLoader(true)
-    // var vm =this;
   var urlSend= "keyword="+this.selectedCountryDeparture
   
   
  
   async function postUrlEncoded() {
-  // Default options are marked with *
  
   const response = await fetch("http://localhost:2800/citySearch?", {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -154,7 +150,6 @@ methods: {
     referrerPolicy: 'no-referrer', // no-referrer, *client
     body: urlSend// body data type must match "Content-Type" header
   });
-   // this.isLoading = true
   return await response.json(); // parses JSON response into native JavaScript objects
 }
 
@@ -167,13 +162,11 @@ postUrlEncoded().then((data) => {
   });
       },searchCity2() {
           this.showLoader(true)
-    // var vm =this;
   var urlSend= "keyword="+this.selectedCountryArrival
   
   
  
   async function postUrlEncoded() {
-  // Default options are marked with *
  
   const response = await fetch("http://localhost:2800/citySearch?", {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -188,7 +181,6 @@ postUrlEncoded().then((data) => {
     referrerPolicy: 'no-referrer', // no-referrer, *client
     body: urlSend// body data type must match "Content-Type" header
   });
-   // this.isLoading = true
   return await response.json(); // parses JSON response into native JavaScript objects
 }
 
@@ -197,7 +189,6 @@ postUrlEncoded().then((data) => {
   this.$store.commit('dataCitySearchArrival', data.data)
   this.showLoader(false)
 })
-  // this.isLoading = false
 },
 
 show () {
@@ -217,7 +208,6 @@ show () {
   },
 
   getFLightPrice () {
- // window.console.log(this.selectedTravel)
   
  var vm=this;
 function chooseCity(flight) { 
@@ -226,8 +216,6 @@ function chooseCity(flight) {
 this.searchObject = this.info2.find(chooseCity);
 this.$store.commit('changePricing', this.searchObject);
 
-// this.info3="";
-  // var duh=this;\
 
   var duh=   {
     "data": {
@@ -235,7 +223,7 @@ this.$store.commit('changePricing', this.searchObject);
         "flightOffers": [this.searchObject]
   }};
   async function postSearchPrice() {
-  // Default options are marked with *
+
   
   const response = await fetch(vm.localhost+"flightprice", {
 
@@ -256,10 +244,9 @@ postSearchPrice().then((data) => {
   window.console.log(data)
      this.flightConfirmation = "PriceConfirmed";
   this.info3=data;
-  // this.$store.commit('changePricing', data.data.flightOffers);
   this.isLoading = true
   this.createOrderAndget ()
-    // this.info3=data // JSON data parsed by `response.json()` call
+
   });
 
 },
@@ -356,8 +343,6 @@ window.console.log(requestCreateOrder)
 this.showLoader(true)
 
 async function postBody() {
-  // Default options are marked with *
-  // const foo=this;
   const response = await fetch("http://localhost:2800"+"/flightCreateOrder", {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
@@ -434,7 +419,7 @@ CreateOrder()
   window.console.log(bodyDate);
  
   async function postUrlEncoded() {
-  // Default options are marked with *
+
  
   const response = await fetch(vm.localhost+"date?"+bodyDate, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -449,12 +434,11 @@ CreateOrder()
     referrerPolicy: 'no-referrer', // no-referrer, *client
     body: bodyDate// body data type must match "Content-Type" header
   });
-   // this.isLoading = true
   return await response.json(); // parses JSON response into native JavaScript objects
 }
-// this.showLoader(false)
+
 postUrlEncoded().then((data) => {
-    // this.info3=data // JSON data parsed by `response.json()` call
+
     window.console.log(data)
       this.info2=data.data;
   this.toggleInfo=true;

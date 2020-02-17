@@ -24,13 +24,12 @@ app.use(express.json());
 app.post('/citySearch', function(req, res) {
 
   keyword = req.body.keyword;
-  // countryCode =req.body.countryCode;
   var urlSend= "&keyword="+keyword
     
   try 
-{//put your id and secret key into it
+{
   token("","").then(function(tokenAuth){
-    // console.log(tokenAuth);
+   
     var NaseUrl = "https://test.api.amadeus.com"
      try {
           citySearch(endpoints.citySearch, NaseUrl, urlSend, tokenAuth.access_token).then(function(y){
