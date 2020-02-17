@@ -42,7 +42,7 @@ export default {
   selectedCountryDeparture: "",
   countries: [],
   selectedCountryArrival: null,
-  localhost: "https://mighty-meadow-12799.herokuapp.com",
+  localhost: "http://localhost:2800/",
   info:{},
   info2:{},
   info3:{},
@@ -141,7 +141,7 @@ methods: {
   async function postUrlEncoded() {
   // Default options are marked with *
  
-  const response = await fetch("https://mighty-meadow-12799.herokuapp.com/citySearch?", {
+  const response = await fetch("http://localhost:2800/citySearch?", {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -175,7 +175,7 @@ postUrlEncoded().then((data) => {
   async function postUrlEncoded() {
   // Default options are marked with *
  
-  const response = await fetch("https://mighty-meadow-12799.herokuapp.com/citySearch?", {
+  const response = await fetch("http://localhost:2800/citySearch?", {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -237,7 +237,7 @@ this.$store.commit('changePricing', this.searchObject);
   async function postSearchPrice() {
   // Default options are marked with *
   
-  const response = await fetch(vm.localhost+"/flightprice", {
+  const response = await fetch(vm.localhost+"flightprice", {
 
 
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -358,7 +358,7 @@ this.showLoader(true)
 async function postBody() {
   // Default options are marked with *
   // const foo=this;
-  const response = await fetch("https://mighty-meadow-12799.herokuapp.com"+"/flightCreateOrder", {
+  const response = await fetch("http://localhost:2800"+"/flightCreateOrder", {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -377,7 +377,7 @@ postBody().then((data) => {
 
 async function CreateOrder() {
 
-  const response = await fetch("https://mighty-meadow-12799.herokuapp.com/"+"flightcretaeorderget" );
+  const response = await fetch("http://localhost:2800/"+"flightcretaeorderget" );
   return await response.json();
 }
 
@@ -436,7 +436,7 @@ CreateOrder()
   async function postUrlEncoded() {
   // Default options are marked with *
  
-  const response = await fetch(vm.localhost+"/date?"+bodyDate, {
+  const response = await fetch(vm.localhost+"date?"+bodyDate, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

@@ -143,23 +143,6 @@ var NaseUrl = "https://test.api.amadeus.com"
 
    })
 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-
-
-
 app.get('/flightcretaeorderget', function(req, res) {
   res.send(JSON.stringify(confirmOrder));
 });
