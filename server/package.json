@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@tvast/plume.js": "^1.0.35",
-    "amadeus": "^3.2.0",
+    "amadeus": "^3.3.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dree": "^2.1.11",

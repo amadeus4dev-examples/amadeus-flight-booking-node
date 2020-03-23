@@ -3,6 +3,8 @@ var http = require('http').createServer(app);
 const socket = require('socket.io')
 const cors = require('cors')
 var express = require('express')
+
+const Amadeus = require("amadeus");
 const bodyParser = require('body-parser');
 var parse = require('socket.io')(http);
 const fetch = require('node-fetch');
@@ -21,95 +23,122 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.json());
 
+var amadeus = new Amadeus({
+  clientId: 'qztkbf5XWjNSGkXRF9bfAwNg6bELWvVD',
+  clientSecret: 'w9mJ7ZJzlEGNffut'
+});
+
 app.post('/citySearch', function(req, res) {
 
-  keyword = req.body.keyword;
-  var urlSend= "&keyword="+keyword
-    
-  try 
-{
-  token("","").then(function(tokenAuth){
-   
-    var NaseUrl = "https://test.api.amadeus.com"
-     try {
-          citySearch(endpoints.citySearch, NaseUrl, urlSend, tokenAuth.access_token).then(function(y){
-          console.log(y)
-          returnSearch=y
-          res.send(JSON.stringify(y));
-          });
-        } 
-        catch(error) {
-          console.error(error);
-        }
+  
 
-      })}
-      catch(error) {
-      console.error(error);
-    }
-    
+
+
 })
-//get flight offer
-app.post('/date', function(req, res) {
-  departure = req.body.departure;
-  arrival = req.body.arrival;
-  locationDeparture = req.body.locationDeparture;
-  locationArrival =req.body.locationArrival;
 
-try 
-{
-  token("","").then(function(tokenAuth){
-
-
-      try {
-          flightSearch(endpoints.searchFlight, NaseUrl,locationDeparture, locationArrival, departure, tokenAuth.access_token).then(function(y){
-            returnFlightSearch=y
-            res.send(JSON.stringify(y));
-          })
-        }
-
-    catch(error) {
-      console.error(error);
-    }})
-
-}
-catch(error) {
-  console.error(error);
-}
-
-  }); 
-
-app.post('/flightprice', function(req, res) {
-  res.json(req.body);
-  inputFlight = req.body;
-
-try 
-{
-  token("","").then(function(tokenAuth){
-
-    console.log(tokenAuth);
-
-      try {
-      flightPrice(NaseUrl,endpoints.flightPrice,inputFlight, tokenAuth.access_token).then(function(z) {
-        // confirmOrder = z
-        console.log(z)
-        }).catch(function(error) {console.error(error);})
-      }
-      
-      catch(error) {
-      console.error(error); 
-
-    }
-        
-  }).catch(function(error) {
-  console.error(error);
+app.get(`/citySearch`, async (req, res) => {
+  console.log(req.query)
+  var keywords = req.query.keyword;
+  // var urlSend= "&keyword="+keyword
+  // const { page, subType, keyword } = req.query;
+  // API call with params we requested from client app
+  const response = await amadeus.client.get("/v1/reference-data/locations", {
+    keyword : keywords,
+    subType :"CITY,AIRPORT",
+    // "page[offset]": 1 * 10
+  }).catch(x=>console.log(x));
+  // Sending response for client
+  try {
+    await res.json(JSON.parse(response.body));
+  } catch (err) {
+    await res.json(err);
+  }
 });
-      }
+    
+//   try 
+// {
+//   token("","").then(function(tokenAuth){
+   
+//     var NaseUrl = "https://test.api.amadeus.com"
+//      try {
+//           citySearch(endpoints.citySearch, NaseUrl, urlSend, tokenAuth.access_token).then(function(y){
+//           console.log(y)
+//           returnSearch=y
+//           res.send(JSON.stringify(y));
+//           });
+//         } 
+//         catch(error) {
+//           console.error(error);
+//         }
 
-  catch(error) {
-  console.error(error);
-     }
+//       })}
+//       catch(error) {
+//       console.error(error);
+//     }
+    
+// })
+// //get flight offer
+// app.post('/date', function(req, res) {
+//   departure = req.body.departure;
+//   arrival = req.body.arrival;
+//   locationDeparture = req.body.locationDeparture;
+//   locationArrival =req.body.locationArrival;
 
-   })
+// try 
+// {
+//   token("","").then(function(tokenAuth){
+
+
+//       try {
+//           flightSearch(endpoints.searchFlight, NaseUrl,locationDeparture, locationArrival, departure, tokenAuth.access_token).then(function(y){
+//             returnFlightSearch=y
+//             res.send(JSON.stringify(y));
+//           })
+//         }
+
+//     catch(error) {
+//       console.error(error);
+//     }})
+
+// }
+// catch(error) {
+//   console.error(error);
+// }
+
+//   }); 
+
+// app.post('/flightprice', function(req, res) {
+//   res.json(req.body);
+//   inputFlight = req.body;
+
+// try 
+// {
+//   token("","").then(function(tokenAuth){
+
+//     console.log(tokenAuth);
+
+//       try {
+//       flightPrice(NaseUrl,endpoints.flightPrice,inputFlight, tokenAuth.access_token).then(function(z) {
+//         // confirmOrder = z
+//         console.log(z)
+//         }).catch(function(error) {console.error(error);})
+//       }
+      
+//       catch(error) {
+//       console.error(error); 
+
+//     }
+        
+//   }).catch(function(error) {
+//   console.error(error);
+// });
+//       }
+
+//   catch(error) {
+//   console.error(error);
+//      }
+
+//    })
 app.post('/flightCreateOrder', function(req, res) {
   res.json(req.body);
 
