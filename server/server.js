@@ -42,7 +42,7 @@ app.get(`/citySearch`, async (req, res) => {
   // var urlSend= "&keyword="+keyword
   // const { page, subType, keyword } = req.query;
   // API call with params we requested from client app
-  const response = await amadeus.client.get("/v1/reference-data/locations", {
+  const response = await amadeus.client.get("/v1/reference-data/locations", { 
     keyword : keywords,
     subType :"CITY,AIRPORT",
     // "page[offset]": 1 * 10
@@ -78,34 +78,28 @@ app.get(`/citySearch`, async (req, res) => {
     
 // })
 // //get flight offer
-// app.post('/date', function(req, res) {
-//   departure = req.body.departure;
-//   arrival = req.body.arrival;
-//   locationDeparture = req.body.locationDeparture;
-//   locationArrival =req.body.locationArrival;
+app.post('/date', async function(req, res) {
 
-// try 
-// {
-//   token("","").then(function(tokenAuth){
+  console.log(req.body)
+  departure = req.body.departure;
+  arrival = req.body.arrival;
+  locationDeparture = req.body.locationDeparture;
+  locationArrival =req.body.locationArrival;
 
+const response = await amadeus.shopping.flightOffersSearch.get({
+    originLocationCode: locationDeparture,
+    destinationLocationCode: locationArrival,
+    departureDate: departure,
+    adults: '1'
+}).catch(err=>console.log(err))
 
-//       try {
-//           flightSearch(endpoints.searchFlight, NaseUrl,locationDeparture, locationArrival, departure, tokenAuth.access_token).then(function(y){
-//             returnFlightSearch=y
-//             res.send(JSON.stringify(y));
-//           })
-//         }
+ try {
+    await res.json(JSON.parse(response.body));
+  } catch (err) {
+    await res.json(err);
+  }
 
-//     catch(error) {
-//       console.error(error);
-//     }})
-
-// }
-// catch(error) {
-//   console.error(error);
-// }
-
-//   }); 
+  }); 
 
 // app.post('/flightprice', function(req, res) {
 //   res.json(req.body);
