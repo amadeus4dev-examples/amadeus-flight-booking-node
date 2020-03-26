@@ -45,7 +45,7 @@ export default {
   info:{},
   info2:{},
   info3:{},
-  selectedDateDeparture :"2020-02-01",
+  selectedDateDeparture :"2020-05-01",
   selectedDateArrival : "2020-02-27",
   mojsOptions : {
             count : 6,
@@ -217,11 +217,13 @@ this.searchObject = this.info2.find(chooseCity);
 this.$store.commit('changePricing', this.searchObject);
 
 
-  var duh=   {
-    "data": {
-        "type": "flight-offers-pricing",
-        "flightOffers": [this.searchObject]
-  }};
+  var duh= this.searchObject
+
+  //   {
+  //   "data": {
+  //       "type": "flight-offers-pricing",
+  //       "flightOffers": [this.searchObject]
+  // }};
   async function postSearchPrice() {
 
   
@@ -241,7 +243,7 @@ this.$store.commit('changePricing', this.searchObject);
 }
 
 postSearchPrice().then((data) => {
-  window.console.log(data)
+  // window.console.log(data)
      this.flightConfirmation = "PriceConfirmed";
   this.info3=data;
   this.isLoading = true
@@ -250,95 +252,96 @@ postSearchPrice().then((data) => {
   });
 
 },
-    createOrderAndget () {
+    createOrderAndget (data) {
       this.showLoader(true)
+      var request = this.$store.getters.pricing 
    
-    var requestCreateOrder={
-  "data": {
-    "type": "flight-order",
-    "flightOffers": [this.$store.getters.pricing],
-    "travelers": [
-      {
-        "id": "1",
-        "dateOfBirth": "1982-01-16",
-        "name": {
-          "firstName": this.form.firstName,
-          "lastName": this.form.lastName
-        },
-        "gender": "MALE",
-        "contact": {
-          "emailAddress": this.form.email ,
-          "phones": [
-            {
-              "deviceType": "MOBILE",
-              "countryCallingCode": "33",
-              "number": "0665735114"
-            }
-          ]
-        },
-        "documents": [
-          {
-            "documentType": "PASSPORT",
-            "birthPlace": "Madrid",
-            "issuanceLocation": "Madrid",
-            "issuanceDate": "2015-04-14",
-            "number": "00000000",
-            "expiryDate": "2025-04-14",
-            "issuanceCountry": "ES",
-            "validityCountry": "ES",
-            "nationality": "ES",
-            "holder": true
-          }
-        ]
-      },
+//     var requestCreateOrder={
+//   "data": {
+//     "type": "flight-order",
+//     "flightOffers": [this.$store.getters.pricing],
+//     "travelers": [
+//       {
+//         "id": "1",
+//         "dateOfBirth": "1982-01-16",
+//         "name": {
+//           "firstName": this.form.firstName,
+//           "lastName": this.form.lastName
+//         },
+//         "gender": "MALE",
+//         "contact": {
+//           "emailAddress": this.form.email ,
+//           "phones": [
+//             {
+//               "deviceType": "MOBILE",
+//               "countryCallingCode": "33",
+//               "number": "0665735114"
+//             }
+//           ]
+//         },
+//         "documents": [
+//           {
+//             "documentType": "PASSPORT",
+//             "birthPlace": "Madrid",
+//             "issuanceLocation": "Madrid",
+//             "issuanceDate": "2015-04-14",
+//             "number": "00000000",
+//             "expiryDate": "2025-04-14",
+//             "issuanceCountry": "ES",
+//             "validityCountry": "ES",
+//             "nationality": "ES",
+//             "holder": true
+//           }
+//         ]
+//       },
       
-    ],
-    "remarks": {
-      "general": [
-        {
-          "subType": "GENERAL_MISCELLANEOUS",
-          "text": "ONLINE BOOKING FROM INCREIBLE VIAJES"
-        }
-      ]
-    },
-    "ticketingAgreement": {
-      "option": "DELAY_TO_CANCEL",
-      "delay": "6D"
-    },
-    "contacts": [
-      {
-        "addresseeName": {
-          "firstName": "PABLO",
-          "lastName": "RODRIGUEZ"
-        },
-        "companyName": "INCREIBLE VIAJES",
-        "purpose": "STANDARD",
-        "phones": [
-          {
-            "deviceType": "LANDLINE",
-            "countryCallingCode": "34",
-            "number": "480080071"
-          },
-          {
-            "deviceType": "MOBILE",
-            "countryCallingCode": "33",
-            "number": "480080072"
-          }
-        ],
-        "emailAddress": "support@increibleviajes.es",
-        "address": {
-          "lines": [
-            "Calle Prado, 16"
-          ],
-          "postalCode": "28014",
-          "cityName": "Madrid",
-          "countryCode": "ES"
-        }
-      }
-    ]
-  }
-}
-window.console.log(requestCreateOrder)
+//     ],
+//     "remarks": {
+//       "general": [
+//         {
+//           "subType": "GENERAL_MISCELLANEOUS",
+//           "text": "ONLINE BOOKING FROM INCREIBLE VIAJES"
+//         }
+//       ]
+//     },
+//     "ticketingAgreement": {
+//       "option": "DELAY_TO_CANCEL",
+//       "delay": "6D"
+//     },
+//     "contacts": [
+//       {
+//         "addresseeName": {
+//           "firstName": "PABLO",
+//           "lastName": "RODRIGUEZ"
+//         },
+//         "companyName": "INCREIBLE VIAJES",
+//         "purpose": "STANDARD",
+//         "phones": [
+//           {
+//             "deviceType": "LANDLINE",
+//             "countryCallingCode": "34",
+//             "number": "480080071"
+//           },
+//           {
+//             "deviceType": "MOBILE",
+//             "countryCallingCode": "33",
+//             "number": "480080072"
+//           }
+//         ],
+//         "emailAddress": "support@increibleviajes.es",
+//         "address": {
+//           "lines": [
+//             "Calle Prado, 16"
+//           ],
+//           "postalCode": "28014",
+//           "cityName": "Madrid",
+//           "countryCode": "ES"
+//         }
+//       }
+//     ]
+//   }
+// }
+window.console.log(data)
 
 this.showLoader(true)
 
@@ -351,14 +354,19 @@ async function postBody() {
     headers: {'Content-Type': 'application/json'},
     redirect: 'follow', // manual, *follow, error
     referrerPolicy: 'no-referrer', // no-referrer, *client
-    body: JSON.stringify(requestCreateOrder)// body data type must match "Content-Type" header
+    body: JSON.stringify(request)// body data type must match "Content-Type" header
   });
   return await response.json(); // parses JSON response into native JavaScript objects
 }
 
-postBody().then((data) => {
-    this.info3=data // JSON data parsed by `response.json()` call
-  });
+postBody().then((data2) => {
+    this.info3=data2
+    window.console.log(data2)
+     // this.$store.commit('change', data2)
+  
+      // router.push('result')
+     this.showLoader(false); // JSON data parsed by `response.json()` call
+  }).then(function(){
 
 async function CreateOrder() {
 
@@ -384,8 +392,15 @@ CreateOrder()
      else{
      window.console.log(json)
      this.$store.commit('change', json)
-     router.push('result')
+     if(json.data){
+      router.push('result')
      this.showLoader(false);
+     }
+
+     else{
+      alert("coucou")
+     }
+     
       }
 
   })
@@ -399,8 +414,86 @@ CreateOrder()
   icon: 'error',
   confirmButtonText: 'skip'
 })
-     }
+     }})
 
+},
+
+chooseflight(){
+ var vm=this;
+function chooseCity(flight) { 
+  return flight.id === vm.selectedTravel;
+}
+this.searchObject = this.info2.find(chooseCity);
+this.$store.commit('changePricing', this.searchObject);
+
+
+  var duh= this.searchObject
+
+  async function postBody() {
+  const response = await fetch("http://localhost:2800"+"/flightCreateOrder", {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {'Content-Type': 'application/json'},
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *client
+    body: JSON.stringify(duh)// body data type must match "Content-Type" header
+  });
+  return await response.json(); // parses JSON response into native JavaScript objects
+}
+
+postBody()
+
+async function CreateOrder() {
+
+  const response = await fetch("http://localhost:2800/"+"flightcretaeorderget" );
+  return await response.json();
+}
+
+try {
+
+CreateOrder()
+  .then((json) => {
+
+    var self= this
+     // this.info3=json;
+
+//      if(json.errors) {
+//       Swal.fire({
+//   title: 'Error!',
+//   text: "Please choose an another flight please",
+//   icon: 'error',
+//   confirmButtonText: 'skip'
+// })
+
+//      }
+//      else{
+     window.console.log(json)
+     self.$store.commit('change', json)
+     // if(json.data){
+      router.push('result')
+     self.showLoader(false);
+     // }
+
+     // else{
+     //  alert("coucou")
+     // }
+     
+      // }
+
+  })
+}
+
+  catch(error) {
+  alert(error);
+     Swal.fire({
+  title: 'Error!',
+  text: 'Do you want to continue'+error,
+  icon: 'error',
+  confirmButtonText: 'skip'
+})
+     } // JSON data parsed by `response.json()` call
 },
 
   letsFly() {

@@ -13,7 +13,7 @@ Vue.use(VueMoJS)
 import VueRouter from 'vue-router'
 
 // import socketio from 'socket.io';
-import VueSocketIO from 'vue-socket.io';
+// import VueSocketIO from 'vue-socket.io';
 
 import VueSweetalert2 from 'vue-sweetalert2';
  
@@ -45,17 +45,6 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 import { store } from './store.js';
-
-Vue.use(new VueSocketIO({
-    debug: true,
-    connection: 'http://localhost:3000',
-    vuex: {
-        store,
-        actionPrefix: 'SOCKET_',
-        mutationPrefix: 'SOCKET_'
-    },
-    //options: { path: "/my-app/" } //Optional options
-}))
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
