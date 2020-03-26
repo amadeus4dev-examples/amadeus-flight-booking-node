@@ -30,10 +30,6 @@ var amadeus = new Amadeus({
 
 app.post('/citySearch', function(req, res) {
 
-  
-
-
-
 })
 
 app.get(`/citySearch`, async (req, res) => {
@@ -55,29 +51,6 @@ app.get(`/citySearch`, async (req, res) => {
   }
 });
     
-//   try 
-// {
-//   token("","").then(function(tokenAuth){
-   
-//     var NaseUrl = "https://test.api.amadeus.com"
-//      try {
-//           citySearch(endpoints.citySearch, NaseUrl, urlSend, tokenAuth.access_token).then(function(y){
-//           console.log(y)
-//           returnSearch=y
-//           res.send(JSON.stringify(y));
-//           });
-//         } 
-//         catch(error) {
-//           console.error(error);
-//         }
-
-//       })}
-//       catch(error) {
-//       console.error(error);
-//     }
-    
-// })
-// //get flight offer
 app.post('/date', async function(req, res) {
 
   console.log(req.body)
@@ -118,33 +91,6 @@ app.post('/flightprice', async function(req, res) {
   } catch (err) {
     await res.json(err);
   }
-
-// try 
-// {
-//   token("","").then(function(tokenAuth){
-
-//     console.log(tokenAuth);
-
-//       try {
-//       flightPrice(NaseUrl,endpoints.flightPrice,inputFlight, tokenAuth.access_token).then(function(z) {
-//         // confirmOrder = z
-//         console.log(z)
-//         }).catch(function(error) {console.error(error);})
-//       }
-      
-//       catch(error) {
-//       console.error(error); 
-
-//     }
-        
-//   }).catch(function(error) {
-//   console.error(error);
-// });
-//       }
-
-//   catch(error) {
-//   console.error(error);
-//      }
 
    })
 app.post('/flightCreateOrder', async function(req, res) {
@@ -223,38 +169,7 @@ const returnBokkin = amadeus.booking.flightOrders.post(
     console.log(responseError);
 });
 
-  //  try {
-  //   await res.json(JSON.stringify(confirmOrder));
-  // } catch (err) {
-  //   await res.json(err);
-  // }
-
 })
-// var NaseUrl = "https://test.api.amadeus.com"
-//   try 
-// {
-//   token("qztkbf5XWjNSGkXRF9bfAwNg6bELWvVD","w9mJ7ZJzlEGNffut").then(function(tokenAuth){
-
-//       try {
-//       createOrder(NaseUrl,endpoints.createOrder,inputFlightCreateOrder, "a@gmail.com", tokenAuth.access_token).then(function(z) {
-//         confirmOrder = z
-//         console.log(z);
-//         }).catch(function(error) {console.error(error);})
-//       }
-      
-//       catch(error) {
-//       console.error(error); 
-
-//     }
-        
-//   }).catch(function(error) {
-//   console.error(error);
-// });
-//       }
-
-//   catch(error) {
-//   console.error(error);
-//      }
 
 app.get('/flightcretaeorderget', function(req, res) {
   res.send(JSON.stringify(confirmOrder));
