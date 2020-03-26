@@ -276,6 +276,8 @@ export default {
             this.showLoader(true)
             var request = this.$store.getters.pricing
 
+            
+            // }
             window.console.log(data)
 
             this.showLoader(true)
@@ -352,6 +354,7 @@ export default {
         },
 
         chooseflight() {
+           this.showLoader(true)
             var vm = this;
 
             function chooseCity(flight) {
@@ -379,56 +382,59 @@ export default {
                 return await response.json(); // parses JSON response into native JavaScript objects
             }
 
-            postBody()
-
-            async function CreateOrder() {
+              async function CreateOrder() {
 
                 const response = await fetch("http://localhost:2800/" + "flightcretaeorderget");
                 return await response.json();
             }
 
+            try{
+              postBody()  
+
+          
+
             try {
 
-                CreateOrder()
-                    .then((json) => {
+                      CreateOrder()
+                            .then((json) => {
+           this.info3=json;
 
-                        var self = this
-                        // this.info3=json;
+           if(json.length <2
+            ) {
+            Swal.fire({
+        title: 'Error!',
+        text: "Please choose an another flight please",
+        icon: 'error',
+        confirmButtonText: 'skip'
+      })
 
-                        //      if(json.errors) {
-                        //       Swal.fire({
-                        //   title: 'Error!',
-                        //   text: "Please choose an another flight please",
-                        //   icon: 'error',
-                        //   confirmButtonText: 'skip'
-                        // })
+           }
+           else{
+           window.console.log(json)
+           this.$store.commit('change', json)
+           router.push('result')
+           this.showLoader(false);
+            }
 
-                        //      }
-                        //      else{
-                        window.console.log(json)
-                        self.$store.commit('change', json)
-                        // if(json.data){
-                        router.push('result')
-                        self.showLoader(false);
-                        // }
+        })
+      }
 
-                        // else{
-                        //  alert("coucou")
-                        // }
+        catch(error) {
+        alert(error);
+           Swal.fire({
+        title: 'Error!',
+        text: 'Do you want to continue'+error,
+        icon: 'error',
+        confirmButtonText: 'skip'
+      })
+           }
 
-                        // }
 
-                    })
-            } catch (error) {
-                alert(error);
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Do you want to continue' + error,
-                    icon: 'error',
-                    confirmButtonText: 'skip'
-                })
-            } // JSON data parsed by `response.json()` call
-        },
+            }
+            catch(err){alert(err)}
+
+            
+},
 
         letsFly() {
             this.showLoader(true)
