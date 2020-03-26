@@ -101,9 +101,23 @@ const response = await amadeus.shopping.flightOffersSearch.get({
 
   }); 
 
-// app.post('/flightprice', function(req, res) {
-//   res.json(req.body);
-//   inputFlight = req.body;
+app.post('/flightprice', async function(req, res) {
+  res.json(req.body);
+  inputFlight = req.body;
+  console.log(req.body)
+
+  const responsePricing = await amadeus.shopping.flightOffers.pricing.post(
+      JSON.stringify({
+        'data': {
+          'type': 'flight-offers-pricing',
+          'flightOffers': inputFlight
+        }})).catch(err=>console.log(err))
+
+   try {
+    await res.json(JSON.parse(responsePricing.body));
+  } catch (err) {
+    await res.json(err);
+  }
 
 // try 
 // {
@@ -132,38 +146,115 @@ const response = await amadeus.shopping.flightOffersSearch.get({
 //   console.error(error);
 //      }
 
-//    })
-app.post('/flightCreateOrder', function(req, res) {
+   })
+app.post('/flightCreateOrder', async function(req, res) {
   res.json(req.body);
 
   let inputFlightCreateOrder = req.body;
-var NaseUrl = "https://test.api.amadeus.com"
-  try 
-{
-  token("","").then(function(tokenAuth){
-
-      try {
-      createOrder(NaseUrl,endpoints.createOrder,inputFlightCreateOrder, "a@gmail.com", tokenAuth.access_token).then(function(z) {
-        confirmOrder = z
-        console.log(z);
-        }).catch(function(error) {console.error(error);})
+console.log(req.body)
+const returnBokkin = amadeus.booking.flightOrders.post(
+      JSON.stringify({
+  "data": {
+    "type": "flight-order",
+    "flightOffers": [
+           inputFlightCreateOrder
+        ],
+    "travelers": [
+      {
+        "id": "1",
+        "dateOfBirth": "1982-01-16",
+        "name": {
+          "firstName": "JORGE",
+          "lastName": "GONZALES"
+        },
+        "gender": "MALE",
+        "contact": {
+          "emailAddress": "jorge.gonzales833@telefonica.es",
+          "phones": [
+            {
+              "deviceType": "MOBILE",
+              "countryCallingCode": "34",
+              "number": "480080076"
+            }
+          ]
+        },
+        "documents": [
+          {
+            "documentType": "PASSPORT",
+            "birthPlace": "Madrid",
+            "issuanceLocation": "Madrid",
+            "issuanceDate": "2015-04-14",
+            "number": "00000000",
+            "expiryDate": "2025-04-14",
+            "issuanceCountry": "ES",
+            "validityCountry": "ES",
+            "nationality": "ES",
+            "holder": true
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "dateOfBirth": "2012-10-11",
+        "gender": "FEMALE",
+        "contact": {
+          "emailAddress": "jorge.gonzales833@telefonica.es",
+          "phones": [
+            {
+              "deviceType": "MOBILE",
+              "countryCallingCode": "34",
+              "number": "480080076"
+            }
+          ]
+        },
+        "name": {
+          "firstName": "ADRIANA",
+          "lastName": "GONZALES"
+        }
       }
-      
-      catch(error) {
-      console.error(error); 
+    ]
+  }
+})
 
-    }
-        
-  }).catch(function(error) {
-  console.error(error);
+    ).then(function(response){
+    console.log(response.result);
+    confirmOrder = response.result
+}).catch(function(responseError){
+    console.log(responseError);
 });
-      }
 
-  catch(error) {
-  console.error(error);
-     }
+  //  try {
+  //   await res.json(JSON.stringify(confirmOrder));
+  // } catch (err) {
+  //   await res.json(err);
+  // }
 
-   })
+})
+// var NaseUrl = "https://test.api.amadeus.com"
+//   try 
+// {
+//   token("qztkbf5XWjNSGkXRF9bfAwNg6bELWvVD","w9mJ7ZJzlEGNffut").then(function(tokenAuth){
+
+//       try {
+//       createOrder(NaseUrl,endpoints.createOrder,inputFlightCreateOrder, "a@gmail.com", tokenAuth.access_token).then(function(z) {
+//         confirmOrder = z
+//         console.log(z);
+//         }).catch(function(error) {console.error(error);})
+//       }
+      
+//       catch(error) {
+//       console.error(error); 
+
+//     }
+        
+//   }).catch(function(error) {
+//   console.error(error);
+// });
+//       }
+
+//   catch(error) {
+//   console.error(error);
+//      }
 
 app.get('/flightcretaeorderget', function(req, res) {
   res.send(JSON.stringify(confirmOrder));
