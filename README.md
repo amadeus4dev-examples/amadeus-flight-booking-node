@@ -1,57 +1,34 @@
 # Development and Testing
-## Set up Node server
 
-Go to the directory
+## Running the code
 
-```sh
-cd server
+1. Create a new `server/.env` file and add your `client_id` and `client_secret` credentials as follows:
+
 ```
-Install depedencies
-```sh
-npm install
+CLIENT_ID=foo
+CLIENT_SECRET=bar
 ```
 
-For authentication add your API Key/Secret to your `.bashrc` or `.zshrc` files or export then into your terminal before starting the Rails server
+2. Start the server:
 
-```sh
-export AMADEUS_CLIENT_ID=YOUR_API_KEY
-export AMADEUS_CLIENT_SECRET=YOUR_API_SECRET
+```
+cd server && npm start
 ```
 
-You can easily switch between `test` and `production` environments:
+3. Start the client:
 
-```sh
-export AMADEUS_HOSTNAME="production" # Be default the environment is set to test
+```
+cd client && npm run build && npm run serve
 ```
 
-> Each environment has different API keys. Do not forget to update them!
+## License
 
+This library is released under the [MIT License](LICENSE).
 
-Launch the server
-```sh
-npm start
-```
+## Help
 
-## Set up Vue js (client)
+Our [developer support team](https://developers.amadeus.com/support) is here
+to help you. You can find us on
+[StackOverflow](https://stackoverflow.com/questions/tagged/amadeus) and
+[email](mailto:developers@amadeus.com).
 
-You need to install vue js cli 
-
-
-```sh
-npm install -g @vue/cli
-# OR
-yarn global add @vue/cli
-```
-
-```sh
-cd client
-```
-Install depedencies
-```sh
-npm install
-```
-Serve the project
-
-```sh
-npm run serve
-```
