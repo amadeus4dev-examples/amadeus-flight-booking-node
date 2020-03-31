@@ -1,4 +1,9 @@
-# Development and Testing
+# Flight booking app using Node and Vue
+
+This repository contains the source code for the blog article `Flight booking app using Node and Vue`. The article is split into two different parts:
+
+- [Part 1](https://developers.amadeus.com/blog/javascript-flight-booking-app-node-vuejs)
+- [Part 2](https://developers.amadeus.com/blog/javascript-flight-booking-app-node-vuejs)
 
 ## Running the code
 
