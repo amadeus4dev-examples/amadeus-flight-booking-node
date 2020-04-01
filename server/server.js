@@ -24,10 +24,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 var amadeus = new Amadeus({
-  clientId: 'qztkbf5XWjNSGkXRF9bfAwNg6bELWvVD',
-  clientSecret: 'w9mJ7ZJzlEGNffut'
+  clientId: '',
+  clientSecret: ''
 });
-
+  
 app.post('/citySearch', function(req, res) {
 
 })
