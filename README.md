@@ -1,57 +1,39 @@
-# Development and Testing
-## Set up Node server
+# Flight booking app using Node and Vue
 
-Go to the directory
+This repository contains the source code for the blog article `Flight booking app using Node and Vue`. The article is split into two different parts:
 
-```sh
-cd server
+- [Part 1](https://developers.amadeus.com/blog/javascript-flight-booking-app-node-vuejs)
+- [Part 2](https://developers.amadeus.com/blog/javascript-flight-booking-app-node-vuejs)
+
+## Running the code
+
+1. Create a new `server/.env` file and add your `client_id` and `client_secret` credentials as follows:
+
 ```
-Install depedencies
-```sh
-npm install
-```
-
-For authentication add your API Key/Secret to your `.bashrc` or `.zshrc` files or export then into your terminal before starting the Rails server
-
-```sh
-export AMADEUS_CLIENT_ID=YOUR_API_KEY
-export AMADEUS_CLIENT_SECRET=YOUR_API_SECRET
+CLIENT_ID=foo
+CLIENT_SECRET=bar
 ```
 
-You can easily switch between `test` and `production` environments:
+2. Start the server:
 
-```sh
-export AMADEUS_HOSTNAME="production" # Be default the environment is set to test
+```
+cd server && npm start
 ```
 
-> Each environment has different API keys. Do not forget to update them!
+3. Start the client:
 
-
-Launch the server
-```sh
-npm start
+```
+cd client && npm run build && npm run serve
 ```
 
-## Set up Vue js (client)
+## License
 
-You need to install vue js cli 
+This library is released under the [MIT License](LICENSE).
 
+## Help
 
-```sh
-npm install -g @vue/cli
-# OR
-yarn global add @vue/cli
-```
+Our [developer support team](https://developers.amadeus.com/support) is here
+to help you. You can find us on
+[StackOverflow](https://stackoverflow.com/questions/tagged/amadeus) and
+[email](mailto:developers@amadeus.com).
 
-```sh
-cd client
-```
-Install depedencies
-```sh
-npm install
-```
-Serve the project
-
-```sh
-npm run serve
-```
