@@ -155,7 +155,7 @@ export default {
 
                 const response = await fetch("http://localhost:2800/citySearch?" + urlSend, {
                     method: 'GET', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'cors', // no-cors, *cors, same-origin
+                    mode: 'no-cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
                     credentials: 'same-origin', // include, *same-origin, omit
                     headers: {
@@ -187,7 +187,7 @@ export default {
 
                 const response = await fetch("http://localhost:2800/citySearch?" + urlSend, {
                     method: 'GET', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'cors', // no-cors, *cors, same-origin
+                    mode: 'no-cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
                     credentials: 'same-origin', // include, *same-origin, omit
                     headers: {
@@ -249,7 +249,7 @@ export default {
 
 
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'cors', // no-cors, *cors, same-origin
+                    mode: 'no-cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
                     credentials: 'same-origin', // include, *same-origin, omit
                     headers: {
@@ -285,7 +285,7 @@ export default {
             async function postBody() {
                 const response = await fetch("http://localhost:2800" + "/flightCreateOrder", {
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'cors', // no-cors, *cors, same-origin
+                    mode: 'no-cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
                     credentials: 'same-origin', // include, *same-origin, omit
                     headers: {
@@ -369,7 +369,7 @@ export default {
             async function postBody() {
                 const response = await fetch("http://localhost:2800" + "/flightCreateOrder", {
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'cors', // no-cors, *cors, same-origin
+                    mode: 'no-cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
                     credentials: 'same-origin', // include, *same-origin, omit
                     headers: {
@@ -456,7 +456,7 @@ export default {
 
                 const response = await fetch(vm.localhost + "date?" + bodyDate, {
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'cors', // no-cors, *cors, same-origin
+                    mode: 'no-cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
                     credentials: 'same-origin', // include, *same-origin, omit
                     headers: {
