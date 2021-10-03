@@ -49,8 +49,8 @@ export default {
         info: {},
         info2: {},
         info3: {},
-        selectedDateDeparture: "2020-05-01",
-        selectedDateArrival: "2020-02-27",
+        selectedDateDeparture: null,
+        selectedDateArrival: null,
         mojsOptions: {
             count: 6,
             radius: {
@@ -93,6 +93,11 @@ export default {
             }
         }
     },
+
+    mounted() {
+        this.selectedDateDeparture = new Date();
+    },
+
     computed: {
 
     },

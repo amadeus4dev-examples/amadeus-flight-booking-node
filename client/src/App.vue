@@ -7,14 +7,31 @@
 export default {
 data: function(){
     return {
-      showLoader : false,
+      menuVisible: false,
+      isVisible: false,
+      mojsOptions: {
+            count: 6,
+            radius: {
+                15: 100
+            },
+            origin: '100% 100%',
+            degree: 360,
+            children: {
+                shape: 'polygon',
+                fill: ['blue', 'white'],
+                isSwirl: true,
+                swirlSize: 10,
+                swirlFrequency: 2,
+                delay: 'stagger(0, 30)'
+            }
+        },
     }
   },
   name: 'app',
-  menuVisible: false,
+  
   components: {
   },
-  created :{
+  created(){
 
  	
   },
