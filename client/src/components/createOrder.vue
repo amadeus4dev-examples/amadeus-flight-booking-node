@@ -166,15 +166,13 @@ export default {
                     referrerPolicy: 'no-referrer', // no-referrer, *client
                     // params: {keyword: self}// body data type must match "Content-Type" header
                 });
-                return await response.json(); // parses JSON response into native JavaScript objects
+                return response.body ? response.json() : {data: []}; // parses JSON response into native JavaScript objects
             }
 
-            postUrlEncoded().then((data) => {
-                window.console.log(data)
-                this.countryList = data.data;
-                this.$store.commit('dataCitySearchMute', data.data)
-                this.showLoader(false)
-
+            postUrlEncoded().then(({data}) => {           
+                this.countryList = data;
+                this.$store.commit('dataCitySearchMute', data);
+                this.showLoader(false);
             });
         },
         searchCity2() {
@@ -198,14 +196,14 @@ export default {
                     referrerPolicy: 'no-referrer', // no-referrer, *client
                     // body: urlSend// body data type must match "Content-Type" header
                 });
-                return await response.json(); // parses JSON response into native JavaScript objects
+                return response.body ? response.json() : {data: []}; // parses JSON response into native JavaScript objects
             }
 
-            postUrlEncoded().then((data) => {
-                this.countryList = data.data;
-                this.$store.commit('dataCitySearchArrival', data.data)
-                this.showLoader(false)
-            })
+            postUrlEncoded().then(({data}) => {           
+                this.countryList = data;
+                this.$store.commit('dataCitySearchArrival', data);
+                this.showLoader(false);  
+            });
         },
 
         show() {
