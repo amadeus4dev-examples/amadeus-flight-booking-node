@@ -96,6 +96,7 @@ export default {
 
     mounted() {
         this.selectedDateDeparture = new Date();
+        this.selectedDateArrival = new Date();
     },
 
     computed: {
