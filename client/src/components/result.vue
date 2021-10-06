@@ -694,7 +694,7 @@ export default {
     data: function() {
         return {
             pricingConfirmation: "Thank you your order is confirmed",
-            MojsOptions: {
+            mojsOptions: {
                 count: 6,
                 radius: {
                     15: 100
@@ -719,8 +719,7 @@ export default {
         BadgerAccordion,
         BadgerAccordionItem,
     },
-    created: {
-        getInfo() {
+    created(){
             if (this.$store.getters.flavor.length < 1) {
                 Swal.fire({
                     title: 'Error!',
@@ -743,8 +742,7 @@ export default {
                     cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
                     cancelButtonAriaLabel: 'Thumbs down'
                 })
-            }
-        }
+            }       
     },
     methods: {
 
