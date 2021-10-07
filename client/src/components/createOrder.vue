@@ -175,8 +175,7 @@ export default {
                 return response.json(); // parses JSON response into native JavaScript objects
             }
 
-            postUrlEncoded()
-            .then(responseData => {
+            postUrlEncoded().then(responseData => {
                 const data = responseData.data || [];        
                 this.countryList = data;
                 this.$store.commit('dataCitySearchMute', data);

@@ -38,7 +38,6 @@ app.get(`/citySearch`, async (req, res) => {
       subType: "CITY,AIRPORT",
     })
     .catch((x) => console.log(x));
-    console.log({response})
   try {
     await res.json(JSON.parse(response.body));
   } catch (err) {
