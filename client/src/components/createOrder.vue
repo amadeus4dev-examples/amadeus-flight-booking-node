@@ -161,7 +161,7 @@ export default {
 
                 const response = await fetch("http://localhost:2800/citySearch?" + urlSend, {
                     method: 'GET', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'no-cors', // no-cors, *cors, same-origin
+                    mode: 'cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
                     credentials: 'same-origin', // include, *same-origin, omit
                     headers: {
@@ -172,14 +172,15 @@ export default {
                     referrerPolicy: 'no-referrer', // no-referrer, *client
                     // params: {keyword: self}// body data type must match "Content-Type" header
                 });
-                return response.body ? response.json() : {data: []}; // parses JSON response into native JavaScript objects
+                return response.json(); // parses JSON response into native JavaScript objects
             }
 
-            postUrlEncoded().then(({data}) => {           
+            postUrlEncoded()
+            .then(responseData => {
+                const data = responseData.data || [];        
                 this.countryList = data;
                 this.$store.commit('dataCitySearchMute', data);
-                this.showLoader(false);
-            });
+            }).finally(() => this.showLoader(false));
         },
         searchCity2() {
             this.showLoader(true)
@@ -191,7 +192,7 @@ export default {
 
                 const response = await fetch("http://localhost:2800/citySearch?" + urlSend, {
                     method: 'GET', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'no-cors', // no-cors, *cors, same-origin
+                    mode: 'cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
                     credentials: 'same-origin', // include, *same-origin, omit
                     headers: {
@@ -202,14 +203,14 @@ export default {
                     referrerPolicy: 'no-referrer', // no-referrer, *client
                     // body: urlSend// body data type must match "Content-Type" header
                 });
-                return response.body ? response.json() : {data: []}; // parses JSON response into native JavaScript objects
+                return response.json(); // parses JSON response into native JavaScript objects
             }
 
-            postUrlEncoded().then(({data}) => {           
+            postUrlEncoded().then(responseData => {
+                const data = responseData.data || [];
                 this.countryList = data;
-                this.$store.commit('dataCitySearchArrival', data);
-                this.showLoader(false);  
-            });
+                this.$store.commit('dataCitySearchArrival', data);              
+            }).finally(() => this.showLoader(false));
         },
 
         show() {
@@ -253,7 +254,7 @@ export default {
 
 
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'no-cors', // no-cors, *cors, same-origin
+                    mode: 'cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
                     credentials: 'same-origin', // include, *same-origin, omit
                     headers: {
@@ -289,7 +290,7 @@ export default {
             async function postBody() {
                 const response = await fetch("http://localhost:2800" + "/flightCreateOrder", {
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'no-cors', // no-cors, *cors, same-origin
+                    mode: 'cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
                     credentials: 'same-origin', // include, *same-origin, omit
                     headers: {
@@ -373,7 +374,7 @@ export default {
             async function postBody() {
                 const response = await fetch("http://localhost:2800" + "/flightCreateOrder", {
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'no-cors', // no-cors, *cors, same-origin
+                    mode: 'cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
                     credentials: 'same-origin', // include, *same-origin, omit
                     headers: {
@@ -460,7 +461,7 @@ export default {
 
                 const response = await fetch(vm.localhost + "date?" + bodyDate, {
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'no-cors', // no-cors, *cors, same-origin
+                    mode: 'cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
                     credentials: 'same-origin', // include, *same-origin, omit
                     headers: {

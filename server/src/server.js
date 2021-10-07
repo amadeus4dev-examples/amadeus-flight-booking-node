@@ -2,6 +2,7 @@ const Amadeus = require("amadeus");
 const express = require("express");
 const socket = require("socket.io");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(
   })
 );
 
+app.use(cors());
 app.use(express.json());
 
 const amadeus = new Amadeus({
@@ -36,6 +38,7 @@ app.get(`/citySearch`, async (req, res) => {
       subType: "CITY,AIRPORT",
     })
     .catch((x) => console.log(x));
+    console.log({response})
   try {
     await res.json(JSON.parse(response.body));
   } catch (err) {
