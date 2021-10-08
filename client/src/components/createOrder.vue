@@ -445,8 +445,8 @@ export default {
             var vm = this;
             this.info2 = "";
 
-            if (this.selectedDateArrival < this.selectedDateDeparture) {
-                this.selectedDateArrival = null;
+            if ((!this.selectedDateArrival && !this.selectedDateDeparture) || (!this.selectedCountryDeparture && !this.selectedCountryArrival) ||
+            this.selectedDateArrival < this.selectedDateDeparture  || this.selectedDateDeparture.setHours(0,0,0,0) < new Date().setHours(0,0,0,0)) {
                 this.showLoader(false);
                 return null;               
             }
