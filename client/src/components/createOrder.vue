@@ -44,7 +44,7 @@ export default {
         menuVisible: false,
         selectedCountryDeparture: "",
         countries: [],
-        selectedCountryArrival: null,
+        selectedCountryArrival: "",
         localhost: "http://localhost:2800/",
         info: {},
         info2: {},
@@ -444,10 +444,20 @@ export default {
             this.showLoader(true)
             var vm = this;
             this.info2 = "";
+
+            if ((!this.selectedDateArrival && !this.selectedDateDeparture) || (!this.selectedCountryDeparture && !this.selectedCountryArrival) ||
+            this.selectedDateArrival < this.selectedDateDeparture  || this.selectedDateDeparture.setHours(0,0,0,0) < new Date().setHours(0,0,0,0)) {
+                this.showLoader(false);
+                return null;               
+            }
+
+            let options = {day: '2-digit', month: '2-digit', year: 'numeric'};
+            let dateDeparture = this.selectedDateDeparture.toLocaleDateString('es', options).split('/').reverse().join('-');
+            let dateArrival = this.selectedDateArrival.toLocaleDateString('es', options).split('/').reverse().join('-');
             let bodyDate = "departure=" +
-                this.selectedDateDeparture +
+                dateDeparture +
                 "&arrival=" +
-                this.selectedDateArrival +
+                dateArrival +
                 "&locationDeparture=" +
                 this.selectedCountryDeparture +
                 "&locationArrival=" +
