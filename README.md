@@ -14,16 +14,20 @@ CLIENT_ID=foo
 CLIENT_SECRET=bar
 ```
 
-2. Start the server:
+2. Install the dependences and start the server:
 
 ```
-cd server && npm start
+cd server
+npm install
+npm start
 ```
 
-3. Start the client:
+3. Install the dependences and start the client:
 
 ```
-cd client && npm run build && npm run serve
+cd client
+npm install
+npm run build && npm run serve
 ```
 
 ## License
