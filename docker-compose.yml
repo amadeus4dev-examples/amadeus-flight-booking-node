@@ -7,8 +7,6 @@ services:
     environment:
       AMADEUS_CLIENT_ID: ${AMADEUS_CLIENT_ID:-}
       AMADEUS_CLIENT_SECRET: ${AMADEUS_CLIENT_SECRET:-}
-      HOST: ${HOST:-}
-      PROTOCOL: ${PROTOCOL:-}
     ports:
       - 2800:2800
   client:
@@ -18,7 +16,7 @@ services:
     ports:
       - 8080:8080
     environment:
-      AMADEUS_CLIENT_ID: ${AMADEUS_CLIENT_ID:-}
-      AMADEUS_CLIENT_SECRET: ${AMADEUS_CLIENT_SECRET:-}
+      HOST: ${HOST:-}
+      PROTOCOL: ${PROTOCOL:-}
     depends_on:
       - server
