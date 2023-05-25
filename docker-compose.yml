@@ -16,7 +16,6 @@ services:
     ports:
       - 8080:8080
     environment:
-      HOST: ${HOST:-}
-      PROTOCOL: ${PROTOCOL:-}
+      PROTOCOL_HOST: ${PROTOCOL_HOST:-}
     depends_on:
       - server

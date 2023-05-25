@@ -4,6 +4,7 @@
 <style lang="scss" src="./style.scss"></style>
 
 <script>
+
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 import 'sweetalert2/src/sweetalert2.scss'
@@ -45,7 +46,7 @@ export default {
         selectedCountryDeparture: "",
         countries: [],
         selectedCountryArrival: "",
-        localhost: (process.env.PROTOCOL || "http") + "://" + (process.env.HOST || "localhost") + ":2800/",
+        localhost: (process.env.PROTOCOL_HOST || "http://localhost") + ":2800/",
         info: {},
         info2: {},
         info3: {},
@@ -158,8 +159,7 @@ export default {
 
             // var self =this.selectedCountryDeparture
             async function postUrlEncoded() {
-
-                const response = await fetch((process.env.PROTOCOL || "http") + "://" + (process.env.HOST || "localhost") + ":2800/citySearch?" + urlSend, {
+                const response = await fetch((process.env.PROTOCOL_HOST || "http://localhost") + ":2800/citySearch?" + urlSend, {
                     method: 'GET', // *GET, POST, PUT, DELETE, etc.
                     mode: 'cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -189,7 +189,7 @@ export default {
 
             async function postUrlEncoded() {
 
-                const response = await fetch((process.env.PROTOCOL || "http") + "://" + (process.env.HOST || "localhost") + ":2800/citySearch?" + urlSend, {
+                const response = await fetch((process.env.PROTOCOL_HOST || "http://localhost") + ":2800/citySearch?" + urlSend, {
                     method: 'GET', // *GET, POST, PUT, DELETE, etc.
                     mode: 'cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -287,7 +287,7 @@ export default {
             this.showLoader(true)
 
             async function postBody() {
-                const response = await fetch((process.env.PROTOCOL || "http") + "://" + (process.env.HOST || "localhost") + ":2800" + "/flightCreateOrder", {
+                const response = await fetch((process.env.PROTOCOL_HOST || "https://localhost") + ":2800" + "/flightCreateOrder", {
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
                     mode: 'cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -371,7 +371,7 @@ export default {
             var duh = this.searchObject
 
             async function postBody() {
-                const response = await fetch((process.env.PROTOCOL || "http") + "://" + (process.env.HOST || "localhost") + ":2800" + "/flightCreateOrder", {
+                const response = await fetch((process.env.PROTOCOL_HOST || "http://localhost") + ":2800" + "/flightCreateOrder", {
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
                     mode: 'cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -388,7 +388,7 @@ export default {
 
               async function CreateOrder() {
 
-                const response = await fetch((process.env.PROTOCOL || "http") + "://" + (process.env.HOST || "localhost") + ":2800/" + "flightcretaeorderget");
+                const response = await fetch((process.env.PROTOCOL_HOST || "http://localhost") + ":2800/" + "flightcretaeorderget");
                 return await response.json();
             }
 
