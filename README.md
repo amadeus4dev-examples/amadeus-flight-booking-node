@@ -8,19 +8,19 @@ This repository contains the source code for the blog article `Flight booking ap
 ## Running the code (with docker-compose)
 
 
-1. For authentication add your API key/secret to your environmental variables.
+For authentication add your API key/secret to your environmental variables.
 
 ```
 export AMADEUS_CLIENT_ID=YOUR_API_KEY
 export AMADEUS_CLIENT_SECRET=YOUR_API_SECRET
 ```
 
-2. Build your Docker images 
+Build your Docker images 
 
 ```
 docker-compose build
 ```
-3. Start your application
+Start your application
 
 ```
 docker-compose up
@@ -28,14 +28,14 @@ docker-compose up
 
 ## Running the code (no Docker)
 
-1. For authentication add your API key/secret to your environmental variables.
+For authentication add your API key/secret to your environmental variables.
 
 ```
 export AMADEUS_CLIENT_ID=YOUR_API_KEY
 export AMADEUS_CLIENT_SECRET=YOUR_API_SECRET
 ```
 
-2. Install the dependences and start the server:
+Install the dependences and start the server:
 
 ```
 cd server
@@ -43,7 +43,7 @@ npm install
 npm start
 ```
 
-3. Install the dependences and start the client:
+Install the dependences and start the client:
 
 ```
 cd client
