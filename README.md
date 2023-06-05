@@ -5,16 +5,37 @@ This repository contains the source code for the blog article `Flight booking ap
 - [Part 1](https://developers.amadeus.com/blog/javascript-flight-booking-app-node-vuejs)
 - [Part 2](https://developers.amadeus.com/blog/javascript-flight-booking-app-node-vuejs-part-2)
 
-## Running the code
+## Running the code (with docker-compose)
 
-1. Create a new `server/.env` file and add your `client_id` and `client_secret` credentials as follows:
+
+For authentication add your API key/secret to your environmental variables.
 
 ```
-CLIENT_ID=foo
-CLIENT_SECRET=bar
+export AMADEUS_CLIENT_ID=YOUR_API_KEY
+export AMADEUS_CLIENT_SECRET=YOUR_API_SECRET
 ```
 
-2. Install the dependences and start the server:
+Build your Docker images 
+
+```
+docker-compose build
+```
+Start your application
+
+```
+docker-compose up
+```
+
+## Running the code (no Docker)
+
+For authentication add your API key/secret to your environmental variables.
+
+```
+export AMADEUS_CLIENT_ID=YOUR_API_KEY
+export AMADEUS_CLIENT_SECRET=YOUR_API_SECRET
+```
+
+Install the dependences and start the server:
 
 ```
 cd server
@@ -22,7 +43,7 @@ npm install
 npm start
 ```
 
-3. Install the dependences and start the client:
+Install the dependences and start the client:
 
 ```
 cd client

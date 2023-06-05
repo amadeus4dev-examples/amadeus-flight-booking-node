@@ -1,0 +1,21 @@
+version: '3.4'
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    environment:
+      AMADEUS_CLIENT_ID: ${AMADEUS_CLIENT_ID:-}
+      AMADEUS_CLIENT_SECRET: ${AMADEUS_CLIENT_SECRET:-}
+    ports:
+      - 2800:2800
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      PROTOCOL_HOST: ${PROTOCOL_HOST:-}
+    depends_on:
+      - server

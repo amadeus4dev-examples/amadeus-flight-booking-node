@@ -9,9 +9,6 @@ const app = express();
 var http = require("http").createServer(app);
 var parse = require("socket.io")(http);
 
-// Getting env variables
-const { CLIENT_ID, CLIENT_SECRET } = require("./config");
-
 let confirmOrder = "";
 
 app.use(bodyParser.json()); // support json encoded bodies
@@ -24,9 +21,9 @@ app.use(
 app.use(cors());
 app.use(express.json());
 
-const amadeus = new Amadeus({
-  clientId: CLIENT_ID,
-  clientSecret: CLIENT_SECRET,
+var amadeus = new Amadeus({
+  clientId: process.env.AMADEUS_CLIENT_ID,
+  clientSecret: process.env.AMADEUS_CLIENT_SECRET
 });
 
 app.get(`/citySearch`, async (req, res) => {
