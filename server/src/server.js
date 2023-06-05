@@ -18,13 +18,18 @@ app.use(
   })
 );
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://client-flight-booking.azurewebsites.net',
+  credentials:true
+}));
 app.use(express.json());
 
 var amadeus = new Amadeus({
   clientId: process.env.AMADEUS_CLIENT_ID,
   clientSecret: process.env.AMADEUS_CLIENT_SECRET
 });
+
+console.log('server running');
 
 app.get(`/citySearch`, async (req, res) => {
   console.log(req.query);
@@ -136,8 +141,8 @@ app.get("/flightcretaeorderget", function (req, res) {
   res.send(JSON.stringify(confirmOrder));
 });
 
-var server = app.listen(process.env.PORT || 2800, () => {
-  console.log("Howdy, I am running at PORT 2800");
+var server = app.listen(process.env.PORT || 8080, () => {
+  console.log("Howdy, I am running at PORT 8080");
 });
 
 let io = socket(server);

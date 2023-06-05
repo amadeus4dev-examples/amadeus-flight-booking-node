@@ -57,7 +57,7 @@ export const store = new Vuex.Store({
   },
    actions : {
     SET_CHAT : async (context) => {
-      let {data} = await Axios.get('http://localhost:3000/chat');
+      let {data} = await Axios.get('https://server-flight-booking.azurewebsites.net:3000/chat');
       window.console.log(data);
       context.commit("SET_CHAT",data);
     },
